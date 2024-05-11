@@ -71,8 +71,12 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public void deleteAllBooks() {
-
         bookDAO.deleteAllBooks();
     }
 
+    @Override
+    public List<Book> searchBooks(String title, String author, String isbn) {
+        // Effettua la ricerca dei libri utilizzando i parametri specificati
+        return bookDAO.searchBooks(title, author, isbn);
+    }
 }

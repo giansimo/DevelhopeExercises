@@ -11,5 +11,6 @@ public interface BookDAO {
     Book updateBook(Long id, Book book);
     Book deleteBook(Long id);
     void deleteAllBooks();
+    List<Book> searchBooks(String title, String author, String isbn);
 
 }

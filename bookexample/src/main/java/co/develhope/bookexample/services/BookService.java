@@ -10,10 +10,9 @@ public interface BookService {
     Book getBookById(long id);
     Book createBook(Book book);
     Book updateBook(long id, Book book);
-
     Book updateBook(Long id, Map<String, String> updates);
-
     Book deleteBook(long id);
     void deleteAllBooks();
+    List<Book> searchBooks(String title, String author, String isbn);
 
 }

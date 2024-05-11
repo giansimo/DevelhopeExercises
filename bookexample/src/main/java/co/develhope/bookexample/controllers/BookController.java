@@ -87,5 +87,14 @@ public class BookController {
         }
     }
 
+    @GetMapping("/search")
+    public List<Book> searchBooks(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String author,
+            @RequestParam(required = false) String isbn) {
+
+        return bookService.searchBooks(title, author, isbn);
+    }
+
 
 }

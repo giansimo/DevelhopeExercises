@@ -4,6 +4,7 @@ import co.develhope.bookexample.entities.Book;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class InMemoryBookDAO implements BookDAO {
@@ -53,5 +54,15 @@ public class InMemoryBookDAO implements BookDAO {
     public void deleteAllBooks() {
         books.clear();
         idCounter = 0L;
+    }
+
+    @Override
+    public List<Book> searchBooks(String title, String author, String isbn) {
+        return books.values().stream()
+                .filter(book ->
+                        (title == null || book.getTitle().toLowerCase().contains(title.toLowerCase())) &&
+                                (author == null || book.getAuthor().toLowerCase().contains(author.toLowerCase())) &&
+                                (isbn == null || book.getIsbn().toLowerCase().contains(isbn.toLowerCase())))
+                .collect(Collectors.toList());
     }
 }

@@ -35,7 +35,7 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity createBook(@Valid @RequestBody Book book, BindingResult bindingResult) {
+    public ResponseEntity<?> createBook(@Valid @RequestBody Book book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
             return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         } else {
@@ -59,17 +59,6 @@ public class BookController {
         }
     }
 
-    @PatchMapping("/update/{id}")
-    public ResponseEntity<Book> patchBook(@PathVariable Long id, @RequestBody Map<String, String> updates) {
-
-        Book updatedBook = bookService.updateBook(id, updates);
-        if (updatedBook == null){
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(updatedBook);
-        }
-
-    }
 
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteBook() {

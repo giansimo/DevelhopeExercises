@@ -2,16 +2,20 @@ package co.develhope.bookexample.services;
 
 import co.develhope.bookexample.DAO.BookDAO;
 import co.develhope.bookexample.entities.Book;
+import co.develhope.bookexample.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService{
 
     @Autowired
+    //@Qualifier("bookRepository") // Specifica il nome del bean
     private BookDAO bookDAO;
 
     @Override
@@ -32,36 +36,6 @@ public class BookServiceImpl implements BookService{
     @Override
     public Book updateBook(long id, Book book) {
         return bookDAO.updateBook(id, book);
-    }
-
-    @Override
-    public Book updateBook(Long id, Map<String, String> updates) {
-
-        Book book = bookDAO.getBookById(id);
-
-        if (book == null){
-            return null;
-        } else {
-            // Effettua l'aggiornamento solo se sono presenti campi validi nell'oggetto di aggiornamento
-            if (updates.containsKey("title")) {
-                book.setTitle(updates.get("title"));
-            }
-            if (updates.containsKey("author")) {
-                book.setAuthor(updates.get("author"));
-            }
-
-            if (updates.containsKey("isbn")) {
-                book.setAuthor(updates.get("isbn"));
-            }
-
-            if (updates.containsKey("isAMasterpiece")) {
-                book.setAuthor(updates.get("isAMasterpiece"));
-            }
-        }
-
-        return bookDAO.updateBook(id, book);
-
-
     }
 
     @Override

@@ -1,21 +1,31 @@
 package co.develhope.bookexample.entities;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+@Entity
+@Table
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    @NotBlank
+    @Column(nullable = false, unique=true, name = "title")
+    @NotNull(message = "Title may not be null")
+    @NotBlank(message = "Title may not be blank")
     private String title;
 
-    @NotNull
-    @NotBlank
+    @Column(nullable = false, name = "author")
+    @NotNull(message = "Author may not be null")
+    @NotBlank(message = "Author may not be blank")
     private String author;
-    @NotNull
-    @NotBlank
+
+    @Column(nullable = false, name = "isbn")
+    @NotNull(message = "ISBN may not be null")
+    @NotBlank(message = "ISBN may not be blank")
     private String isbn;
 
+    @Column(nullable = false, name = "isAMasterpiece")
     private boolean isAMasterpiece;
 
     public Book() {}

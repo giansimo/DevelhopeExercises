@@ -32,12 +32,11 @@ public class InMemoryBookDAO implements BookDAO {
     }
 
     @Override
-    public Book updateBook(Long id, Book book) {
-        if (!books.containsKey(id)) {
+    public Book updateBook(Book book) {
+        if (!books.containsKey(book.getId())) {
             return null;
         }
-        book.setId(id);
-        books.put(id, book);
+        books.put(book.getId(), book);
         return book;
     }
 

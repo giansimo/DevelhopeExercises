@@ -5,18 +5,10 @@ import jakarta.validation.constraints.NotNull;
 
 public class Book {
     private Long id;
-    @NotNull
-    @NotBlank
     private String title;
-    @NotNull
-    @NotBlank
     private String author;
-    @NotNull
-    @NotBlank
     private String isbn;
-    @NotNull
-    @NotBlank
-    private boolean isAMasterpiece;
+    private Boolean isAMasterpiece;
 
     public Book() {}
 
@@ -27,22 +19,20 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public Book(String title, String author, String isbn, boolean isAMasterpiece) {
+    public Book(String title, String author, String isbn, Boolean isAMasterpiece) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.isAMasterpiece = isAMasterpiece;
     }
 
-    public Book(Long id, String title, String author, String isbn, boolean isAMasterpiece) {
+    public Book(Long id, String title, String author, String isbn, Boolean isAMasterpiece) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.isAMasterpiece = isAMasterpiece;
     }
-
-
 
     public Long getId() {
         return id;
@@ -77,11 +67,11 @@ public class Book {
     }
 
 
-    public boolean isIsAMasterpiece() {
+    public Boolean isIsAMasterpiece() {
         return isAMasterpiece;
     }
 
-    public void setIsAMasterpiece(boolean isAMasterpiece) {
+    public void setIsAMasterpiece(Boolean isAMasterpiece) {
         this.isAMasterpiece = isAMasterpiece;
     }
 

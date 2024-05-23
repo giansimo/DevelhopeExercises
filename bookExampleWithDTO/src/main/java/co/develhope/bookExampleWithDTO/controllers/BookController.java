@@ -1,6 +1,8 @@
 package co.develhope.bookExampleWithDTO.controllers;
 
 import co.develhope.bookExampleWithDTO.DTO.BookCreationDTO;
+import co.develhope.bookExampleWithDTO.DTO.BookUpdateDTO;
+import co.develhope.bookExampleWithDTO.DTO.BookUpdatePatchDTO;
 import co.develhope.bookExampleWithDTO.Mapper.BookMapper;
 import co.develhope.bookExampleWithDTO.entities.Book;
 import co.develhope.bookExampleWithDTO.services.BookService;
@@ -25,8 +27,9 @@ public class BookController {
 
 
     @GetMapping
-    public List<Book> getAllBooks() {
-        return bookService.getAllBooks();
+    public ResponseEntity<List<Book>> getAllBooks() {
+        return ResponseEntity.ok(bookService.getAllBooks());
+        //return ResponseEntity.status(HttpStatus.OK).body(bookService.getAllBooks());
     }
 
     @GetMapping("/{id}")
@@ -40,23 +43,23 @@ public class BookController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity createBook(@Valid @RequestBody BookCreationDTO bookDTO, BindingResult bindingResult) {
+    public ResponseEntity<?> createBook(@Valid @RequestBody BookCreationDTO bookDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
             return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         } else {
-            Book book = mapper.toBook(bookDTO);
-            Book createdBook = bookService.createBook(book);
+            Book createdBook = bookService.createBook(bookDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
         }
 
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id, @Valid @RequestBody Book book, BindingResult bindingResult) {
+    @PutMapping("/update")
+    public ResponseEntity<Book> updateBook(@Valid @RequestBody BookUpdateDTO bookDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().build();
         } else {
-            Book updatedBook = bookService.updateBook(id, book);
+            Book book = mapper.toBook(bookDTO);
+            Book updatedBook = bookService.updateBook(book);
             if (updatedBook != null) {
                 return ResponseEntity.ok().body(updatedBook);
             } else {
@@ -66,15 +69,18 @@ public class BookController {
     }
 
     @PatchMapping("/update/{id}")
-    public ResponseEntity<Book> patchBook(@PathVariable Long id, @RequestBody Map<String, String> updates) {
-
-        Book updatedBook = bookService.updateBook(id, updates);
-        if (updatedBook == null){
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<Book> updateBook(@PathVariable Long id, @Valid @RequestBody BookUpdatePatchDTO bookDTO,
+                                           BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().build();
         } else {
-            return ResponseEntity.ok(updatedBook);
+            Book updatedBook = bookService.checkAndUpdateBook(id, bookDTO);
+            if (updatedBook != null) {
+                return ResponseEntity.ok().body(updatedBook);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
         }
-
     }
 
     @DeleteMapping("/delete")

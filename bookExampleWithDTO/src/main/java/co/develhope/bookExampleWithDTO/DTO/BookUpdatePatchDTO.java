@@ -3,19 +3,16 @@ package co.develhope.bookExampleWithDTO.DTO;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public class BookCreationDTO {
-    @NotNull(message = "Attento a non dimenticarti il campo title")
-    @NotBlank(message = "Non fare il furbo, riempi il campo title")
+public class BookUpdatePatchDTO {
+    @NotBlank
     private String title;
-    @NotNull(message = "Attento a non dimenticarti il campo author")
-    @NotBlank(message = "Non fare il furbo, riempi il campo author")
+    @NotBlank
     private String author;
-    @NotNull(message = "Attento a non dimenticarti il campo isbn")
-    @NotBlank(message = "Non fare il furbo, riempi il campo isbn")
+    @NotBlank
     private String isbn;
     private boolean isAMasterpiece;
 
-    public BookCreationDTO(String title, String author, String isbn, boolean isAMasterpiece) {
+    public BookUpdatePatchDTO(String title, String author, String isbn, boolean isAMasterpiece) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;

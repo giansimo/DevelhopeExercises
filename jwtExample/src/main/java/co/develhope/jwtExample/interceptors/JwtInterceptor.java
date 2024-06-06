@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -40,7 +41,7 @@ public class JwtInterceptor implements HandlerInterceptor {
             System.out.println("JWT Token does not begin with Bearer String");
         }
 
-        if (username != null && jwtToken != null) {
+        if (username != null) {
             UserDetails userDetails = userService.loadUserByUsername(username);
             if (!jwtService.validateToken(jwtToken, userDetails)) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid JWT Token");

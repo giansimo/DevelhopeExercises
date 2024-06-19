@@ -1,5 +1,6 @@
 package co.develhope.bookexample.controllers;
 
+import co.develhope.bookexample.DTO.BookDTO;
 import co.develhope.bookexample.entities.Book;
 import co.develhope.bookexample.services.BookService;
 import jakarta.validation.Valid;
@@ -37,6 +38,7 @@ public class BookController {
     @PostMapping("/add")
     public ResponseEntity<?> createBook(@Valid @RequestBody Book book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
+
             return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         } else {
             Book createdBook = bookService.createBook(book);
@@ -47,6 +49,20 @@ public class BookController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @Valid @RequestBody Book book, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().build();
+        } else {
+            Book updatedBook = bookService.updateBook(id, book);
+            if (updatedBook != null) {
+                return ResponseEntity.ok().body(updatedBook);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        }
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Book> updateBook(@PathVariable Long id, @Valid @RequestBody BookDTO book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().build();
         } else {

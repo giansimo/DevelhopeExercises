@@ -11,13 +11,13 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, unique=true, name = "title")
-    @NotNull(message = "Title may not be null")
-    @NotBlank(message = "Title may not be blank")
+    @NotNull(message = "Title 123123 may not be null")
+    @NotBlank(message = "Title 1232131 may not be blank")
     private String title;
 
     @Column(nullable = false, name = "author")
-    @NotNull(message = "Author may not be null")
-    @NotBlank(message = "Author may not be blank")
+    @NotNull(message = "Author not null")
+    @NotBlank(message = "Author not blank")
     private String author;
 
     @Column(nullable = false, name = "isbn")

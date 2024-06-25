@@ -1,0 +1,25 @@
+1) Definire una classe "Contatto" che abbia i seguenti attributi:
+- Nome
+- Cognome
+- Numero di telefono
+- Email
+- Tipologia (Lavoro/Personale/AmiciStretti)
+* Implementa almeno due tipologie di costruttori per la classe Contatto.
+* Implementa i metodi getter e setter per tutti gli attributi della classe Contatto.
+* Implementare un metodo che stampi tutte le info relative al contatto
+2) Progettare una classe Rubrica con i seguenti attributi:
+- Contatti
+* Implementare il costruttore.
+* Implementare i getter e setter per ciascuna variabile.
+* Implementare un metodo aggiungiContatto(Contatto contatto) che aggiunga il contatto alla rubrica.
+* Implementare un metodo rimuoviContatto(Contatto contatto) che rimuova il contatto dalla rubrica.
+* Implementare un metodo stampaRubrica() che mostri le info di tutti i contatti della rubrica.
+* (Facoltativo) Implementare un metodo ricercaContattoPerNome(String name) che faccia una ricerca all’interno della rubrica basandosi sul nome.
+3)  Creare una classe Main nella quale:
+* Istanziare 3 contatti.
+* Creare una Rubrica.
+* Aggiungere i 3 contatti nella rubrica.
+* Stampare a video lo stato della rubrica.
+* (Facoltativo) Cercare uno dei contatti dalla rubrica.
+* Rimuovere il contatto appena trovato
+* Stampare a video lo stato aggiornato della rubrica.

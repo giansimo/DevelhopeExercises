@@ -1,0 +1,29 @@
+1)
+* Progettare una classe Studente con i seguenti attributi privati:
+- Num. Matricola
+- Nome
+- Cognome
+- Indirizzo di residenza
+* Implementare almeno due tipologie di costruttori e i relativi getter e setter per ciascuna variabile.
+* Implementare il metodo toString() per mostrare in output alcune info relative all’istanza della classe.
+2)
+* Progettare una classe Corso che permetta di memorizzare:
+- Nome del corso
+- Crediti formativi
+- Studenti iscritti
+* Implementare un costruttore che inizializzi solamente il nome e il numero di crediti.
+* Implementare i getter e i setter per ciascuna variabile.
+* Realizzare un metodo che stampi gli studenti iscritti al corso.
+* Realizzare un metodo per aggiungere uno studente agli studenti iscritti al corso.
+* Realizzare un metodo che prenda in input una lista di corsi e che dia in output il numero di crediti totali corrispondenti. (Metodo Static)
+* Realizzare un metodo ControllaIscrizioneStudente che prenda in input uno studente e restituisca se lo studente è presente o meno tra gli iscritti
+* Realizzare un metodo che permetta la ricerca in base ad una stringa passata in input (keySearch) e che ritorni una lista di studenti coerenti con la ricerca effettuata.
+3)
+* Creare una classe Main nella quale:
+* Istanziare 3 oggetti di tipo Studenti usando i 2 costruttori creati.
+* Istanziare due oggetti di tipo Corso A e B iscrivendo gli studenti creati.
+* Stampare per entrambi i corsi gli studenti iscritti.
+* Creare un nuovo corso C e calcolare la somma dei CFU dei 3 corsi A, B e C.
+* Aggiungere un nuovo Studente al corso C e stampare la nuova lista degli iscritti
+* Verificare che il nuovo studente sia stato correttamente iscritto al corso C e che non sia presente tra gli iscritti dei corsi precedenti A e B.
+* Utilizzare il metodo di ricerca per provare a fare una ricerca all’interno di un corso.

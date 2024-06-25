@@ -27,8 +27,21 @@ public class Corso {
     }
 
     public Studente removeStudente(Studente studente){
-        //TODO
+        for (int idx = 0; idx < studenti.length ; idx++) {
+            if (studenti[idx] != null && studenti[idx].equals(studente)){
+                studenti[idx] = null;
+                return studente;
+            }
+        }
         return null;
+    }
+
+    public void stampaStudenti(){
+        for (int idx = 0; idx < studenti.length ; idx++) {
+            if (studenti[idx] != null){
+                System.out.println(studenti[idx]);
+            }
+        }
     }
 
     // Setter and getter

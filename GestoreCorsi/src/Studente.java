@@ -26,4 +26,16 @@ public class Studente extends Persona{
     public void setMateriaPreferita(String materiaPreferita) {
         this.materiaPreferita = materiaPreferita;
     }
+
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nome='" + super.getNome() + '\'' +
+                ", cognome='" + super.getCognome() + '\'' +
+                ", luogoDiNascita='" + super.getLuogoDiNascita() + '\'' +
+                ", annoDiNascita=" + super.getAnnoDiNascita() +
+                ", materiaPreferita=" + this.materiaPreferita +
+                '}';
+    }
 }

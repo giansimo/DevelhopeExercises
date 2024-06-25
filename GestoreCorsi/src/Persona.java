@@ -51,4 +51,14 @@ public class Persona {
     public void setAnnoDiNascita(int annoDiNascita) {
         this.annoDiNascita = annoDiNascita;
     }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", luogoDiNascita='" + luogoDiNascita + '\'' +
+                ", annoDiNascita=" + annoDiNascita +
+                '}';
+    }
 }

@@ -1,1 +1,7 @@
 Menu del mio ristorante
+
+BEVANDE
+-Acqua
+-Vino
+-Birra
+-Analcolici

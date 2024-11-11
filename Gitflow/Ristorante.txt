@@ -1,5 +1,12 @@
 Menu del mio ristorante
 
+Primi
+- Cacio e pepe
+- Carbonara
+- Risotto alla pescatore
+- Pappardelle al ragù di cinchiale
+- Gnocchi al pomodoro
+
 Secondi:
 - Abbacchio
 - Agnello arrosto

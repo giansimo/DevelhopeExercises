@@ -36,6 +36,8 @@ public class JwtInterceptor implements HandlerInterceptor {
                 System.out.println("Unable to get JWT Token");
             } catch (ExpiredJwtException e) {
                 System.out.println("JWT Token has expired");
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JWT Token is missing");
+                return false;
             }
         } else {
             System.out.println("JWT Token does not begin with Bearer String");
@@ -44,7 +46,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         if (username != null) {
             UserDetails userDetails = userService.loadUserByUsername(username);
             if (!jwtService.validateToken(jwtToken, userDetails)) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid JWT Token");
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JWT Token has expired");
                 return false;
             }
         } else {
